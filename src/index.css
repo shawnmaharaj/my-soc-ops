@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-accent: #2563eb;
-  --color-accent-light: #3b82f6;
-  --color-marked: #dcfce7;
-  --color-marked-border: #22c55e;
-  --color-bingo: #fbbf24;
+  --color-primary: #dc143c;
+  --color-secondary: #0047ab;
+  --color-accent: #ffd700;
+  --color-neutral: #f8f8f8;
+  --color-text: #1a1a1a;
+  --color-white: #ffffff;
 }
 
 html,
@@ -16,6 +18,91 @@ body,
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Rubik', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-neutral);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+
+/* Retro diagonal stripe pattern */
+.pattern-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(220, 20, 60, 0.05) 10px,
+    rgba(220, 20, 60, 0.05) 20px
+  );
+}
+
+/* Gradient utilities */
+.gradient-primary-secondary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.gradient-secondary-accent {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+}
+
+.gradient-primary-accent {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+.gradient-tri {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 50%, var(--color-secondary) 100%);
+}
+
+/* Staggered reveal animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-item {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.reveal-1 { animation-delay: 0ms; }
+.reveal-2 { animation-delay: 150ms; }
+.reveal-3 { animation-delay: 300ms; }
+
+/* Winning celebration animation */
+@keyframes pulseGolden {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 215, 0, 0);
+  }
+}
+
+.pulse-golden {
+  animation: pulseGolden 1.5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-2deg) scale(1);
+  }
+  50% {
+    transform: rotate(2deg) scale(1.03);
+  }
+}
+
+.wiggle-mark {
+  animation: wiggle 0.3s ease-in-out;
+}
+
+/* Remove tap highlight */
+* {
   -webkit-tap-highlight-color: transparent;
 }
